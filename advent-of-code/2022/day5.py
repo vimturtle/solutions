@@ -17,7 +17,7 @@ while True:
 
 def move(command, stacks, at_once):
     n, src, dest = [int(num) for num in re.findall(r"\d+", command)]
-    _stacks = stacks.copy()
+    _stacks = stacks[:]
     takeout = stacks[src - 1][:n]
     _stacks[src - 1] = stacks[src - 1][n:]
     _stacks[dest - 1] = (takeout if at_once else takeout[::-1]) + stacks[dest - 1]
