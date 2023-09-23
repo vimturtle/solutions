@@ -11,6 +11,7 @@ def follow(h, t):
     dist = 0
     if abs(h - t) <= abs(1 + 1j): # Adjacent
         return dist
+
     if h.real == t.real: # Same vertical plane
         dist = sign(h.imag - t.imag) * 1j
     elif h.imag == t.imag: # Same horizonal plane
