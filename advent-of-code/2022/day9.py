@@ -9,7 +9,7 @@ sign = lambda n: 0 if n == 0 else (-1, 1)[n > 0]
 def follow(h, t):
     """Return distance the tail must travel to follow head"""
     dist = 0
-    if abs(h - t) <= abs(1 + 1j):
+    if abs(h - t) <= abs(1 + 1j): # Adjacent
         return dist
     if h.real == t.real: # Same vertical plane
         dist = sign(h.imag - t.imag) * 1j
