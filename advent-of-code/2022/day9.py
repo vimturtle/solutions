@@ -1,60 +1,32 @@
 with open("input/day9.txt") as f:
     motions = f.read().strip().splitlines()
 
+direcs = {'U': 1j, 'R': 1, 'D': -1j, 'L': -1}
+knots = [0 + 0j] * 10
+visited = [set([knot]) for knot in knots]
+sign = lambda n: 0 if n == 0 else (-1, 1)[n > 0]
 
-knots = [(0, 0)] * 10
-tails1, tails9 = set(), set()
+def follow(h, t):
+    dist = 0
+    if abs(h - t) <= abs(1 + 1j):
+        return dist
+    if h.real == t.real: # Same vertical plane
+        dist = sign(h.imag - t.imag) * 1j
+    elif h.imag == t.imag: # Same horizonal plane
+        dist = sign(h.real - t.real)
+    else: # Diagonally apart
+        dist = sign(h.real - t.real) + sign(h.imag - t.imag) * 1j
 
-direcs = {"L": (-1, 0), "R": (1, 0), "U": (0, 1), "D": (0, -1)}
-
-
-def add(t1, t2):
-    return tuple(sum(x) for x in zip(t1, t2))
-
-
-def diff(t1, t2):
-    return tuple([abs(t1[i] - t2[i]) for i in range(len(t1))])
-
-
-def move(head, tail, direc):
-    _head = add(head, direcs[direc])
-    _tail = tail
-
-    d = diff(_head, tail)
-    if d in [(2, 0), (0, 2)]:
-        _tail = add(tail, direcs[direc])
-    elif d in [(2, 1), (1, 2)]:
-        _tail = head
-
-    return _head, _tail
-
-
-def move10(knots, direc):
-    _head = add(knots[0], direcs[direc])
-    new = [_head]
-
-    for knot in knots[1:]:
-        _tail = knot
-        d = diff(_head, _tail)
-        if d in [(2, 0), (0, 2)]:
-            _tail = add(knot, direcs[direc])
-        elif d in [(2, 1), (1, 2)]:
-            _tail = _head
-
-        new.append(_tail)
-        _head = _tail
-
-    return new
-
+    return dist
 
 for motion in motions:
     direc, steps = motion.split()
 
     for i in range(int(steps)):
-        knots = move10(knots, direc)
-        tails1.add(knots[1])
-        tails9.add(knots[9])
+        knots[0] += direcs[direc]
 
+        for i in range(1, 10):
+            knots[i] += follow(knots[i-1], knots[i])
+            visited[i].add(knots[i])
 
-print(tails1, "\n\n", tails9)
-print(len(tails1), len(tails9))
+print(len(visited[1]), len(visited[9]))
