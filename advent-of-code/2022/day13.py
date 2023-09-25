@@ -1,24 +1,27 @@
 with open("input/day13.txt") as f:
-    packets = [[*map(eval, group.split())] for group in f.read().split('\n\n')]
+    packets = [[*map(eval, group.split())] for group in f.read().split("\n\n")]
 
 p1 = 0
-lt2 = 0 # Number of packets smaller than [[2]]
-lt6 = 0 # Number of packets smaller than [[6]]
+lt2 = 0  # Number of packets smaller than [[2]]
+lt6 = 0  # Number of packets smaller than [[6]]
+
 
 # Nice elegant trick from u/4HbQ
 def cmp(l, r):
     match l, r:
         case int(), int():
-            return (l-r)
+            return l - r
         case int(), list():
             return cmp([l], r)
         case list(), int():
             return cmp(l, [r])
         case list(), list():
             for z in map(cmp, l, r):
-                if z: return z
+                if z:
+                    return z
             return cmp(len(l), len(r))
-        
+
+
 for i, pair in enumerate(packets, 1):
     if cmp(*pair) < 0:
         p1 += i
