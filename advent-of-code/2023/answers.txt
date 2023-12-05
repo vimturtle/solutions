@@ -1,2 +1,5 @@
-- Day 1: 54916 | 54728
-- Day 2: 2377 | 71220
+- Day 1: Trebuchet?! | 54916 | 54728
+- Day 2: Cube Conundrum | 2377 | 71220
+- Day 3: Gear Ratios
+- Day 4: Scratchcards | 21959 | 5132675
+- Day 5: If You Give A Seed A Fertilizer | 
