@@ -24,6 +24,6 @@ p2 = math.lcm(
 )
 
 # LCM for part 2 doesn't generalize for all inputs.
-# A general approach would be to use the Chinese Remainder Theorem.
+# A general approach would be to use the Chinese remainder theorem.
 
 print(p1, p2)
