@@ -4,3 +4,5 @@
 - Day 4: Scratchcards                    | 21959 | 5132675
 - Day 5: If You Give A Seed A Fertilizer | 107430936 | 
 - Day 6: Wait For It                     | 1413720 | 30565288
+- Day 7:
+- Day 8: Haunted Wasteland               | 17873 | 15746133679061
