@@ -23,4 +23,7 @@ p2 = math.lcm(
     *[follow(head, is_ghost=True) for head in coords.keys() if head.endswith("A")]
 )
 
+# LCM for part 2 doesn't generalize for all inputs.
+# A general approach would be to use the Chinese Remainder Theorem.
+
 print(p1, p2)
