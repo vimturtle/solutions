@@ -1,30 +1,23 @@
-#  with open("input/gc.txt") as f:
-#  s1, s2 = f.read().splitlines()
-#  print(sum([a != b for a, b in zip(s1, s2)]))
+with open("input/gc.txt") as f:
+    lines = f.read().splitlines()
 
-test = """>Rosalind_6404
-CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
-TCCCACTAATAATTCTGAGG
->Rosalind_5959
-CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCT
-ATATCCATTTGTCAGCAGACACGC
->Rosalind_0808
-CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
-TGGGAACCTGCGGGCAGTAGGTGGAAT
-"""
+strings = {}
+curr_id = None
 
-lines = test.splitlines()
+for line in lines:
+    if line.startswith(">"):
+        strings[line] = ""
+        curr_id = line
+    else:
+        strings[curr_id] += line
 
-highest_gc = 0
-highest_id = ""
+high_gc = 0
+high_id = ""
 
-for i, line in enumerate(lines):
-    if not line.startswith(">"):
-        gc = [c for c in line if c in ["C", "G"]]
-        gc_content = len(gc) * 100 / len(line)
+for k, v in strings.items():
+    gc = len([c for c in v if c in ["C", "G"]]) * 100 / len(v)
+    if gc > high_gc:
+        high_gc = gc
+        high_id = k
 
-        if gc_content > highest_gc:
-            highest = gc_content
-            highest_id = lines[i - 1]
-
-print(highest_id + "\n" + highest_gc)
+print(high_id[1:] + "\n" + str(round(high_gc, 6)))
