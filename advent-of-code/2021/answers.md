@@ -12,7 +12,7 @@
 | 10  | Syntax Scoring          | 12560   | PLPAFBCL      |
 | 11  | Dumbo Octopus           | 66802   | 21800916620   |
 | 12  | Passage Pathing         |         |               |
-| 13  | Transparent Origami     | 671     |               |
+| 13  | Transparent Origami     | 671     | PCPHARKL      |
 | 14  | Extended Polymerization |         |               |
 | 15  | Chiton                  |         |               |
 | 16  | Packet Decoder          |         |               |
@@ -25,29 +25,3 @@
 | 23  | Amphipod                |         |               |
 | 24  | Arithmetic Logic Unit   |         |               |
 | 25  | Sea Cucumber            |         |               |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
