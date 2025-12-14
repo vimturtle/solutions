@@ -2,7 +2,7 @@ a, b, i = 1, 1, 2
 
 while True:
     a, b = b, a+b
-    i += 1
     if len(str(b)) > 999:
-        print(i)
+        print(i+1)
         break
+    i += 1
