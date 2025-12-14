@@ -12,13 +12,13 @@ for m in inputs:
         npos = pos+s
         if npos > 99:
             npos -= 100
-            if not npos == 0:
+            if npos != 0:
               p2 += 1
     elif d == 'L':
         npos = pos-s
         if npos < 0:
             npos += 100
-            if not pos == 0:
+            if pos != 0:
               p2 += 1
 
     if npos == 0:
